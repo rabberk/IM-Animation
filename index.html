@@ -107,8 +107,11 @@ video model motion control in cases with significant scale differences or substa
                          style="max-width: 100%; border-radius: 12px; 
                                 box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
                     <p style="margin-top: 16px; color: #6b7280; font-size: 0.95rem;">
-                        IM-Animation introduces an impressive implicit motion representation and retargeting method. Our model supports implicit
-video model motion control in cases with significant scale differences or substantial variations in posture and body shape.
+                        We propose IM-Animation, an implicit portrait animation solution. Given a identity image and a motion video, we employ a
+three-stage training strategy. In the first stage, we train a compact motion encoder based on a 1D tokenizer. In the subsequent second
+and third stages, we train a temporal retargeting module based on mask tokens, utilizing a lightweight heatmap decoder for intermediate
+supervision. This approach ensures that we can encode precise retargeted information without disclosing the ID information of the driven
+video or the pose information of the source image. Ultimately, we achieve end-to-end training of the entire model.
                     </p>
                 </div>
                 <div style="display: grid; gap: 20px;">
