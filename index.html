@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IM-Animation | CVPR 2026 Findings Track</title>
+    <title>IM-Animation | CVPR 202X</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
-            --primary-dark: #1d4ed8;
             --secondary: #7c3aed;
-            --accent: #f59e0b;
             --text: #1f2937;
             --text-light: #6b7280;
-            --bg: #ffffff;
             --bg-alt: #f8fafc;
-            --border: #e5e7eb;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text);
-            background: var(--bg);
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .hero {
@@ -30,79 +25,34 @@
             color: white;
             padding: 80px 0 60px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        .hero-content { position: relative; z-index: 1; }
         .venue-badge {
             display: inline-block;
             background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
             padding: 8px 20px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 24px;
-            border: 1px solid rgba(255,255,255,0.3);
         }
-        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 16px; }
         .hero .subtitle { font-size: 1.25rem; opacity: 0.9; max-width: 800px; margin: 0 auto 32px; }
-        .authors { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 16px; font-size: 1.1rem; }
-        .author { display: inline-flex; align-items: center; gap: 4px; }
+        .authors { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 16px; }
         .author.me { font-weight: 600; color: #fbbf24; }
         .affiliations { font-size: 0.95rem; opacity: 0.85; margin-bottom: 8px; }
-        .email { font-size: 0.9rem; opacity: 0.8; font-family: monospace; }
-        .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 0.95rem; }
-        .btn-primary { background: white; color: var(--primary); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; margin: 0 6px; }
+        .btn-primary { background: white; color: #2563eb; }
         .btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
-        .btn-secondary:hover { background: rgba(255,255,255,0.25); }
         .main { padding: 60px 0; }
         .section { margin-bottom: 60px; }
         .section-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 3px solid var(--primary); display: inline-block; }
         .abstract-box { background: var(--bg-alt); border-left: 4px solid var(--primary); padding: 28px 32px; border-radius: 0 12px 12px 0; font-size: 1.05rem; line-height: 1.8; }
-        .contributions { display: grid; gap: 20px; }
-        .contribution-card { background: var(--bg-alt); padding: 24px 28px; border-radius: 12px; border-left: 4px solid var(--secondary); display: flex; gap: 16px; align-items: flex-start; }
-        .contribution-number { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
-        .contribution-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text); }
-        .contribution-content p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
-        .results-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
-        .results-table th { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 16px; text-align: center; font-weight: 600; }
-        .results-table td { padding: 14px 16px; text-align: center; border-bottom: 1px solid var(--border); }
-        .results-table tr:nth-child(even) { background: var(--bg-alt); }
-        .results-table tr:hover { background: #eef2ff; }
-        .results-table .highlight { background: #dcfce7 !important; font-weight: 600; color: #166534; }
-        .results-table .second { background: #fef3c7 !important; }
-        .bibtex { background: #1e293b; color: #e2e8f0; padding: 24px; border-radius: 12px; font-family: 'Monaco', 'Menlo', monospace; font-size: 0.85rem; line-height: 1.6; overflow-x: auto; position: relative; }
-        .bibtex-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #334155; }
-        .bibtex-title { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .copy-btn { background: #334155; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: background 0.2s; }
-        .copy-btn:hover { background: #475569; }
-        footer { background: var(--bg-alt); padding: 40px 0; text-align: center; color: var(--text-light); font-size: 0.9rem; border-top: 1px solid var(--border); }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero .subtitle { font-size: 1rem; }
-            .authors { font-size: 0.95rem; }
-            .actions { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 280px; justify-content: center; }
-            .abstract-box { padding: 20px 24px; }
-            .results-table { font-size: 0.85rem; }
-            .results-table th, .results-table td { padding: 10px 8px; }
-        }
     </style>
 </head>
 <body>
     <section class="hero">
-        <div class="container hero-content">
-            <div class="venue-badge">🏆 CVPR 202X (Oral/Poster)</div>
+        <div class="container">
+            <div class="venue-badge">🏆 CVPR 202X</div>
             <h1>IM-Animation</h1>
             <p class="subtitle">An Implicit Motion Representation for Identity-decoupled Character Animation</p>
             <div class="authors">
@@ -117,36 +67,86 @@
                 <span class="author">Lin Gao<sup>1,2,3*</sup></span>
             </div>
             <div class="affiliations">
-                <sup>1</sup>Institute of Computing Technology, CAS &nbsp;|&nbsp;
-                <sup>2</sup>University of Chinese Academy of Sciences &nbsp;|&nbsp;
-                <sup>3</sup>School of Advanced Interdisciplinary Sciences, UCAS &nbsp;|&nbsp;
-                <sup>4</sup>Kling Team, Kuaishou Technology &nbsp;|&nbsp;
-                <sup>5</sup>Cardiff University
+                <sup>1</sup>ICT, CAS | <sup>2</sup>UCAS | <sup>3</sup>SAIS, UCAS | <sup>4</sup>Kuaishou | <sup>5</sup>Cardiff
             </div>
-            <div class="email">📧 gaolin@ict.ac.cn</div>
-            <div class="actions">
-                <a href="#" class="btn btn-primary">📄 Paper (PDF)</a>
-                <a href="#" class="btn btn-secondary">💻 Code (Coming Soon)</a>
+            <div style="margin-top: 32px;">
+                <a href="#" class="btn btn-primary">📄 Paper</a>
+                <a href="#" class="btn btn-secondary">💻 Code</a>
                 <a href="#" class="btn btn-secondary">▶️ Video</a>
-                <a href="#" class="btn btn-secondary">📦 arXiv</a>
             </div>
         </div>
     </section>
     <main class="main">
         <div class="container">
+            <main class="main">
+        <div class="container">
             <section class="section">
                 <h2 class="section-title">📄 Abstract</h2>
                 <div class="abstract-box">
-                    <p>Recent progress in video diffusion models has markedly advanced character animation, which synthesizes motioned videos by animating a static identity image according to a driving video. <strong>Explicit methods</strong> represent motion using skeleton, DWPose or other explicit structured signals, but struggle to handle spatial mismatches and varying body scales. <strong>Implicit methods</strong>, on the other hand, capture high-level implicit motion semantics directly from the driving video, but suffer from identity leakage and entanglement between motion and appearance.</p>
-                    <p style="margin-top: 16px;">To address the above challenges, we propose a <strong>novel implicit motion representation</strong> that compresses per-frame motion into compact <strong>1D motion tokens</strong>. This design relaxes strict spatial constraints inherent in 2D representations and effectively prevents identity information leakage from the motion video. Furthermore, we design a <strong>temporally consistent mask token-based retargeting module</strong> that enforces a temporal training bottleneck, mitigating interference from the source image's motion and improving retargeting consistency. Our methodology employs a <strong>three-stage training strategy</strong> to enhance the training efficiency and ensure high fidelity.</p>
-                    <p style="margin-top: 16px;">Extensive experiments demonstrate that our implicit motion representation and the proposed <strong>IM-Animation</strong> achieve <strong>superior or competitive performance</strong> compared with state-of-the-art methods.</p>
+                    <p>Recent progress in video diffusion models has advanced character animation. <strong>Explicit methods</strong> represent motion using skeleton or DWPose, but struggle with spatial mismatches. <strong>Implicit methods</strong> capture motion semantics directly, but suffer from identity leakage.</p>
+                    <p style="margin-top: 16px;">We propose a <strong>novel implicit motion representation</strong> compressing per-frame motion into <strong>1D motion tokens</strong>. We design a <strong>mask token-based retargeting module</strong> with temporal training bottleneck. Our <strong>three-stage training strategy</strong> ensures high fidelity.</p>
+                    <p style="margin-top: 16px;"><strong>IM-Animation</strong> achieves <strong>superior performance</strong> vs. state-of-the-art.</p>
                 </div>
             </section>
+
             <section class="section">
                 <h2 class="section-title">💡 Key Contributions</h2>
-                <div class="contributions">
-                    <div class="contribution-card">
-                        <div class="contribution-number">1</div>
-                        <div class="contribution-content">
-                            <h3>Compact 1D Motion Representation</h3>
-                            <p>We present an innovat
+                <div style="display: grid; gap: 20px;">
+                    <div style="background: #f8fafc; padding: 24px 28px; border-radius: 12px; border-left: 4px solid #7c3aed; display: flex; gap: 16px;">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</div>
+                        <div><h3 style="font-size: 1.1rem; margin-bottom: 8px;">Compact 1D Motion Representation</h3><p style="color: #6b7280; font-size: 0.95rem;">Compresses motion into spatially invariant 1D tokens, preventing identity leakage.</p></div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 24px 28px; border-radius: 12px; border-left: 4px solid #7c3aed; display: flex; gap: 16px;">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</div>
+                        <div><h3 style="font-size: 1.1rem; margin-bottom: 8px;">Mask Token-based Retargeting</h3><p style="color: #6b7280; font-size: 0.95rem;">Uses mask tokens as latent bottleneck to remove motion from source image.</p></div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 24px 28px; border-radius: 12px; border-left: 4px solid #7c3aed; display: flex; gap: 16px;">
+                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</div>
+                        <div><h3 style="font-size: 1.1rem; margin-bottom: 8px;">Efficient Three-Stage Training</h3><p style="color: #6b7280; font-size: 0.95rem;">Progressive training reduces costs and achieves effective disentanglement.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">📊 Quantitative Results</h2>
+                <table style="width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: linear-gradient(135deg, #2563eb, #7c3aed); color: white;">
+                            <th style="padding: 16px;">Method</th>
+                            <th style="padding: 16px;">PSNR↑</th>
+                            <th style="padding: 16px;">SSIM↑</th>
+                            <th style="padding: 16px;">LPIPS↓</th>
+                            <th style="padding: 16px;">FID↓</th>
+                            <th style="padding: 16px;">FVD↓</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8fafc;"><td style="padding: 14px 16px; text-align: center;">Wan-Animate</td><td style="padding: 14px 16px; text-align: center;">22.72</td><td style="padding: 14px 16px; text-align: center; background: #fef3c7;">0.92</td><td style="padding: 14px 16px; text-align: center; background: #fef3c7;">0.24</td><td style="padding: 14px 16px; text-align: center;">59.10</td><td style="padding: 14px 16px; text-align: center; background: #fef3c7;">267.71</td></tr>
+                        <tr style="background: #dcfce7; font-weight: 600; color: #166534;"><td style="padding: 14px 16px; text-align: center;"><strong>IM-Animation</strong></td><td style="padding: 14px 16px; text-align: center;"><strong>22.87</strong></td><td style="padding: 14px 16px; text-align: center;">0.91</td><td style="padding: 14px 16px; text-align: center; background: #fef3c7;">0.24</td><td style="padding: 14px 16px; text-align: center;"><strong>51.19</strong></td><td style="padding: 14px 16px; text-align: center;">270.42</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="section">
+                <h2 class="section-title">📚 Citation</h2>
+                <div style="background: #1e293b; color: #e2e8f0; padding: 24px; border-radius: 12px; font-family: monospace; font-size: 0.85rem; overflow-x: auto;">
+                    <pre style="margin: 0;">@inproceedings{xu2025imanimation,
+  title={IM-Animation: An Implicit Motion Representation 
+         for Identity-decoupled Character Animation},
+  author={Xu, Zhufeng and Gao, Xuan and Liu, Feng-Lin and 
+          Zhang, Haoxian and Fang, Zhixue and Lai, Yu-Kun and 
+          Liu, Xiaoqiang and Wan, Pengfei and Gao, Lin},
+  booktitle={CVPR},
+  year={2025}
+}</pre>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer style="background: #f8fafc; padding: 40px 0; text-align: center; color: #6b7280; font-size: 0.9rem; border-top: 1px solid #e5e7eb;">
+        <div class="container">
+            <p>© 2025 IM-Animation Project Team</p>
+            <p style="margin-top: 8px;">Institute of Computing Technology, CAS</p>
+        </div>
+    </footer>
+</body>
+</html>
