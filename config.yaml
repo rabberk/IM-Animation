@@ -1,0 +1,15 @@
+model:
+  vq_model:
+    codebook_size: 4096
+    token_size: 12
+    use_l2_norm: true
+    commitment_cost: 0.25
+    vit_enc_model_size: large
+    vit_enc_patch_size: 16
+    num_latent_tokens: 32
+    quantize_mode: vq
+    is_legacy: true
+dataset:
+  preprocessing:
+    height_size: 256
+    width_size: 256

@@ -1,0 +1,6 @@
+IM-Animation motion encoder uses modified TiTok components from
+https://github.com/bytedance/1d-tokenizer (Apache-2.0).
+Original copyright and reference notices are retained in source files.
+This distribution extracts the encoder, vector quantizer, and preprocessing
+from the IM-Animation research implementation and adds an encoder-only loader.
+The original TiTok legacy reshape is preserved.

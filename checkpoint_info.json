@@ -1,0 +1,24 @@
+{
+  "checkpoint": "train_dit_5C_v6_part5/step-12200.safetensors",
+  "checkpoint_mtime_utc": "2025-11-28T03:50:08Z",
+  "selection": "Latest file modification time among the inspected local checkpoints; not a quality ranking.",
+  "weight_file": "motion_encoder_latest.safetensors",
+  "weight_bytes": 607017208,
+  "sha256": "008316ed723d89a5cc4b5d6b2917509b67b434fdba92c722b36116bc0aa32c10",
+  "saved_tensors_from_selected_checkpoint": 300,
+  "frozen_codebook_source": "train_motion_only_full_3C_20joint/step-3700.safetensors",
+  "total_exported_tensors": 301,
+  "limitations": "Frozen VQ codebook reconstructed according to the available training script; historical runtime state has not been independently verified.",
+  "verification": {
+    "tensor_hashes_verified": 301,
+    "strict_load": true,
+    "original_forward_exact_match": true,
+    "output_shape": [
+      1,
+      12,
+      1,
+      32
+    ],
+    "torch": "2.7.1+cu118"
+  }
+}

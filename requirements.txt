@@ -1,0 +1,6 @@
+torch>=2.1
+einops>=0.7
+omegaconf>=2.3
+safetensors>=0.4
+accelerate>=0.26
+huggingface_hub>=0.24
